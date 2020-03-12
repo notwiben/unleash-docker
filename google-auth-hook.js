@@ -24,11 +24,11 @@ const passport = require('@passport-next/passport');
 const GoogleOAuth2Strategy = require('@passport-next/passport-google-oauth2')
     .Strategy;
 
-// const validEmails = (process.env.AUTHORIZED_EMAILS || "").split(",");
-//     console.error(
-//       "Valid emails for logging in to unleash with Google: ",
-//       validEmails
-//     );
+const validEmails = (process.env.AUTHORIZED_EMAILS || "").split(",");
+    console.error(
+      "Valid emails for logging in to unleash with Google: ",
+      validEmails
+    );
 
 passport.use(
     new GoogleOAuth2Strategy(
