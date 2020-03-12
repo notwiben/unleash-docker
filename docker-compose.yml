@@ -6,7 +6,7 @@ services:
       - "4242:4242"
       - "8080:8080"
     environment:
-      # AUTHORIZED_EMAILS: someemail1@gmail.com,someemail2@gmail.com
+      AUTHORIZED_EMAILS: AUTHORIZED_EMAILS@AUTHORIZED_EMAILS.com
       DATABASE_URL: postgres://unleash:unleash@db/unleash
       GOOGLE_CLIENT_ID: GOOGLE_CLIENT_ID
       GOOGLE_CLIENT_SECRET: GOOGLE_CLIENT_SECRET
