@@ -25,10 +25,16 @@ const GoogleOAuth2Strategy = require('@passport-next/passport-google-oauth2')
     .Strategy;
 
 const validEmails = (process.env.AUTHORIZED_EMAILS || "").split(",");
-    console.error(
-      "Valid emails for logging in to unleash with Google: ",
-      validEmails
-    );
+console.info(
+    "Valid emails for logging in to unleash with Google: ",
+    validEmails
+);
+
+const validEmailDomain = (process.env.AUTHORIZED_EMAIL_DOMAIN || "").split(",");
+console.info(
+  "Valid email domain for logging in to unleash with Google: ",
+  validEmails
+);
 
 passport.use(
     new GoogleOAuth2Strategy(
@@ -39,7 +45,7 @@ passport.use(
         },
 
         (accessToken, refreshToken, profile, done) => {
-            if (validEmails.indexOf(profile.emails[0].value) > -1) {
+            if (validEmails.indexOf(profile.emails[0].value) > -1) OR (profile.emails[0].value.endsWith(validEmailDomain) > -1) {
                 done(
                     null,
                     new User({
